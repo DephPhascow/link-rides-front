@@ -12,6 +12,24 @@ const router = createRouter({
       meta: { auth: false, meta: {title: "Главная страница", description: "Главная страница сайта"} }
     },
     {
+      path: '/registration',
+      name: 'registration',
+      component: () => import('../views/RegistrationView.vue'),
+      meta: { auth: false, meta: {title: "Регистрация", description: "Регистрация сайта"} }
+    },
+    {
+      path: '/TaxiSeacrh',
+      name: 'TaxiSeacrh',
+      component: () => import('../views/TaxiSearchView.vue'),
+      meta: { auth: false, meta: {title: "Поиск такси", description: "Поиск такси сайта"} }
+    },
+    {
+      path: '/TripView',
+      name: 'Trip',
+      component: () => import('../views/TripView.vue'),
+      meta: { auth: false, meta: {title: "Поездка", description: "Поездка сайта"} }
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: () => import('../views/NotFoundView.vue'), 

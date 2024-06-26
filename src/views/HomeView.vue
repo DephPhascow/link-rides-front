@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { defineComponent } from 'vue';
+import ProfileComponent from '../components/elements/ProfileComponent.vue';
+import AdComponent from '../components/elements/AdComponent.vue';
+import HistoryComponent from '../components/elements/HistoryComponent.vue';
+import ActionButtonComponent from '../components/elements/ActionButtonComponent.vue';
+
 </script>
 
 <template>
@@ -15,36 +20,13 @@ import { defineComponent } from 'vue';
             <a class="home__link home__link-1" href="#">Find Taxi</a>
             <a class="home__link home__link-2" href="#">Statistics</a>
         </div>
-        <div class="home__profile-block">
-            <img src="../assets/user.svg" alt="user">
-            My Profile
-            <button class="home__profile-btn">
-                <img class="home__car-svg" src="../assets/car.svg" alt="taxi">
-                Start/Stop Driving
-            </button>
+        <div>
+          <ProfileComponent>
+          </ProfileComponent>
+          <AdComponent/>
         </div>
-        <div class="home__ads">
-            <a class="home__ad" href="#" alt="ads">Ad 1</a>
-            <a class="home__ad" href="#" alt="ads">Ad 2</a>
-        </div>
-        <h3 class="home__h3">
-            History
-        </h3>
-        <div class="home__history-block">
-          <div class="home__history-1 home__history">
-            <div class="home__completed">
-                <img class="svg" src="../assets/road.svg" alt="road">
-                Completed
-            </div>
-            3
-          </div>
-          <div class="home__history-2 home__history">
-            <div class="home__cancelled">
-                <img class="svg" src="../assets/cancel.svg" alt="cancel">
-                Cancelled
-            </div>
-            1
-          </div>
+        <div>
+          <HistoryComponent/>
         </div>
         <div class="home__faq-block">
           <div class="home__notifications">
@@ -56,9 +38,9 @@ import { defineComponent } from 'vue';
             FAQ
           </div>
         </div>
-        <button class="home__btn">
-          Main Action
-        </button>
+        <div >
+          <ActionButtonComponent/>
+        </div>
     </div>
 </template>
 
@@ -117,54 +99,8 @@ import { defineComponent } from 'vue';
     max-height: 40px;
   }
 
-  .home__profile-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding: 20px;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 10px;
-    background-color: rgb(180, 180, 180);
-  }
-
-  .home__profile-btn {
-    max-width: 400px;
-    padding: 8px;
-    font-size: 16px;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(35, 56, 177);
-  }
-
-  .home__car-svg {
-    width: 20px;
-    background-color: white;
-  }
-
-  .home__ads {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgb(180, 180, 180);
-  }
-
-  .home__ad {
-    display: flex;
-    justify-content: center;
-    max-width: 200px;
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: rgba(150, 149, 149, 0.911);
-  }
-
+  
+  
   .home__h3 {
     font-size: 24px;
     font-weight: 500;
@@ -226,18 +162,6 @@ import { defineComponent } from 'vue';
     gap: 4px;
   }
 
-  .home__btn {
-    display: flex;
-    justify-content: center;
-    max-width: 100%;
-    padding: 20px 30px;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    background-color: rgb(35, 56, 177);
-  }
 </style>
 
 <script lang="ts">
@@ -245,6 +169,10 @@ import { defineComponent } from 'vue';
   export default defineComponent({
     name: 'HomeView',
     components: {
+      ProfileComponent,
+      AdComponent,
+      HistoryComponent,
+      ActionButtonComponent
   }
   })
 </script> 

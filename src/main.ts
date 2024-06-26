@@ -1,10 +1,10 @@
 import './assets/main.css'
-
 import { createApp } from 'vue'
 import { languages, defaultLocale } from "@/i18n/index";
 import { createI18n, useI18n } from "vue-i18n";
 import { createPinia } from 'pinia'
 import { createMetaManager } from 'vue-meta'
+import 'maz-ui/styles' // or import 'maz-ui/css/main.css'
 
 import App from './App.vue'
 import router from './router'
