@@ -2,7 +2,6 @@
 import { defineComponent } from 'vue';
 import ProfileComponent from '../components/elements/ProfileComponent.vue';
 import AdComponent from '../components/elements/AdComponent.vue';
-import HistoryComponent from '../components/elements/HistoryComponent.vue';
 import ActionButtonComponent from '../components/elements/ActionButtonComponent.vue';
 
 </script>
