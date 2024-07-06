@@ -15,6 +15,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "dropzone": "^5.9.3",
     "libphonenumber-js": "^1.11.4",
     "maz-ui": "^3.44.3",
     "pinia": "^2.1.7",

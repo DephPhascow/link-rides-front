@@ -18,8 +18,8 @@ const router = createRouter({
       meta: { auth: false, meta: {title: "Регистрация", description: "Регистрация сайта"} }
     },
     {
-      path: '/TaxiSeacrh',
-      name: 'TaxiSeacrh',
+      path: '/TaxiSearch',
+      name: 'TaxiSearch',
       component: () => import('../views/TaxiSearchView.vue'),
       meta: { auth: false, meta: {title: "Поиск такси", description: "Поиск такси сайта"} }
     },
@@ -28,6 +28,12 @@ const router = createRouter({
       name: 'Trip',
       component: () => import('../views/TripView.vue'),
       meta: { auth: false, meta: {title: "Поездка", description: "Поездка сайта"} }
+    },
+    {
+      path: '/DriverRegistration',
+      name: 'DreverInfo',
+      component: () => import('../views/DriverRegistrationView.vue'),
+      meta: { auth: false, meta: {title: "Информация", description: "Инфо о водителе"} }
     },
     {
       path: '/:pathMatch(.*)*',
