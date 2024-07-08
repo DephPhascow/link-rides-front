@@ -36,6 +36,12 @@ const router = createRouter({
       meta: { auth: false, meta: {title: "Информация", description: "Инфо о водителе"} }
     },
     {
+      path: '/TaxiOffer',
+      name: 'TaxiOffer',
+      component: () => import('../views/TaxiOfferView.vue'),
+      meta: { auth: false, meta: {title: "Информация", description: "Страница таксиста"} }
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: () => import('../views/NotFoundView.vue'), 

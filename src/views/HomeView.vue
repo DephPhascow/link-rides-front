@@ -25,7 +25,7 @@ import ActionButtonComponent from '../components/elements/ActionButtonComponent.
           <AdComponent/>
         </div>
         <div>
-          <HistoryComponent/>
+          <!-- <HistoryComponent/> -->
         </div>
         <div class="home__faq-block">
           <div class="home__notifications">
@@ -170,7 +170,7 @@ import ActionButtonComponent from '../components/elements/ActionButtonComponent.
     components: {
       ProfileComponent,
       AdComponent,
-      HistoryComponent,
+      // HistoryComponent,
       ActionButtonComponent
   }
   })
