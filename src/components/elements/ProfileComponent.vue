@@ -5,10 +5,10 @@ import defineComponent from 'vue'
 <template>
     <div class="Profile container">
         <div class="home__profile-block">
-            <img src="../../assets/user.svg" alt="user">
+            <img src="@/assets/images/user.svg" alt="user">
             My Profile
             <button class="home__profile-btn">
-                <img class="home__car-svg" src="../../assets/car.svg" alt="taxi">
+                <img class="home__car-svg" src="@/assets/images/car.svg" alt="taxi">
                 Start/Stop Driving
             </button>
         </div>

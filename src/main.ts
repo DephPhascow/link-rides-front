@@ -34,12 +34,27 @@ const vuetify = createVuetify({
   directives,
 })
 
-app.use(createPinia())
-app.use(router)
-app.use(i18n);
-app.use(vuetify);
-app.use(createMetaManager())
+// app.use(createPinia())
+// app.use(router)
+// app.use(i18n);
+// app.use(vuetify);
+// app.use(createMetaManager())
 
-await router.isReady()
-app.mount('#app')
+// await router.isReady()
+// app.mount('#app')
 
+async function initApp() {
+  const app = createApp(App);
+
+  app.use(createPinia());
+  app.use(i18n);
+  app.use(vuetify);
+  app.use(router);
+  app.use(createMetaManager());
+
+  // Ожидание готовности роутера
+  await router.isReady();
+
+  app.mount('#app');
+}
+initApp();

@@ -48,7 +48,8 @@ export default {
   },
   data() {
     return {
-      showPopup: true;
+      model: "",
+      showPopup: true,
     }
   }
 }

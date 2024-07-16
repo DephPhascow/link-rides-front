@@ -31,7 +31,7 @@ import {defineComponent, type PropType } from 'vue';
                     Пункт А:
                 </span>
                 <span class="history__span-2 history__span">
-                    {{item.punkt_a}} 
+                    {{item.street_a}} 
                 </span>
             </div>
 
@@ -41,7 +41,7 @@ import {defineComponent, type PropType } from 'vue';
                     Пункт Б:
                 </span>
                 <span class="history__span-2 history__span">
-                 {{item.punkt_b}} 
+                 {{item.street_b}} 
                 </span>
             </div>
 
@@ -167,20 +167,20 @@ import {defineComponent, type PropType } from 'vue';
 <script lang="ts">
 
  export interface ListItem {
-    date: number;
+    date: string;
     price: number;
     street_a: string;
     street_b: string;
     driver: string;
     car: string;
-    car_number: number;
-    time: number;
+    car_number: string;
+    time: string;
  }
 
- export default {
+ export default defineComponent({
     name: 'TripHistoryComponent',
     props: {
         items: Array as PropType <ListItem[]>
     }
- }
+ })
 </script>

@@ -11,7 +11,7 @@ import ActionButtonComponent from '../components/elements/ActionButtonComponent.
         <div class="home__heading-block">
             <h1 class="home__header-1">Link Rides</h1>
             <h1 class="home__header-2">P2P
-              <img class="home__header-svg" src="../assets/taxi.svg" alt="taxi">
+              <img class="home__header-svg" src="@/assets/images/taxi.svg" alt="taxi">
                Market
             </h1>
         </div>
@@ -29,11 +29,11 @@ import ActionButtonComponent from '../components/elements/ActionButtonComponent.
         </div>
         <div class="home__faq-block">
           <div class="home__notifications">
-            <img class="svg" src="../assets/bells.svg" alt="bells">
+            <img class="svg" src="@/assets/images/bells.svg" alt="bells">
             Notifications
           </div>
           <div class="home__faq">
-            <img class="svg" src="../assets/question.svg" alt="question">
+            <img class="svg" src="@/assets/images/question.svg" alt="question">
             FAQ
           </div>
         </div>

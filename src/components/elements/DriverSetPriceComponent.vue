@@ -176,21 +176,22 @@ export interface CardItem {
   comments: string;
 }
 
- export default {
-    name: 'DriverSetPriceComponent',
-    components: {
-        PopupComponent
-    },
-    props: {
-        card: Array as PropType <CardItem[]>
-    },
-    data() {
+ export default defineComponent({
+  name: 'DriverSetPriceComponent',
+  components: {
+      PopupComponent
+  },
+  props: {
+      card: Array as PropType <CardItem[]>
+  },
+  data() {
     return {
       minPrice : 5000,
       maxPrice: 100000,
       slider: 40,
       timeToShow: 5,
       setPrice: 5,
+      oldPrice: 0,
       items: [
         {
           punkt_a: 'Улица Суворова',
@@ -199,18 +200,18 @@ export interface CardItem {
           comment: 'Включите кондиционер',
         }
       ],
-      watch: {
-      setPrice() {
-        this.oldPrice = this.setPrice
-        this.timeToShow = 5
-   }
-}
     }
+  },
+  watch: {
+    setPrice() {
+      this.oldPrice = this.setPrice
+      this.timeToShow = 5
+    } 
   },
   methods: {
     close() {
       this.$emit('close')
     }
   }
- }
+ })
 </script>
