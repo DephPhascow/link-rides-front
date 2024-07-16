@@ -45,43 +45,6 @@ import {defineComponent, type PropType } from 'vue';
                 </span>
             </div>
 
-            
-            <div class="history__driver history__div">
-                <span class="history__span">
-                    Водитель:
-                </span>
-                <span class="history__span-2 history__span">
-                    {{item.driver}} 
-                </span>
-            </div>
-
-            <div class="history__car history__div">
-                <span class="history__span">
-                    Автомобиль:
-                </span>
-                <span class="history__span-2 history__span">
-                    {{item.car}}
-                </span>
-            </div>
-
-            <div class="history__car history__div">
-                <span class="history__span">
-                    Номер Авто:
-                </span>
-                <span class="history__span-2 history__span">
-                    {{item.car_number}} 
-                </span>
-            </div>
-
-            <div class="history__time history__div">
-                <span class="history__span">
-                    Время поездки:
-                </span> 
-                <span class="history__span-2 history__span">
-                    {{item.time}}
-                </span>
-            </div>
-
         </li>
     </ul>
  </div>
@@ -178,9 +141,41 @@ import {defineComponent, type PropType } from 'vue';
  }
 
  export default {
-    name: 'TripHistoryComponent',
+    name: 'TripView',
     props: {
         items: Array as PropType <ListItem[]>
+    },
+    data() {
+        return {
+            items: [
+                {
+                    date: '24.08.24',
+                    price: '8$',
+                    punkt_a: 'street of General Marshal',
+                    punkt_b: 'street of President',
+                },
+                {
+                    date: '24',
+                    price: '10',
+                    punkt_a: 'street of General Marshal',
+                    punkt_b: 'street of President',
+                },
+                {
+                    date: '24',
+                    price: '10',
+                    punkt_a: 'street of General Marshal',
+                    punkt_b: 'street of President',
+                },
+                {
+                    date: '24',
+                    price: '10',
+                    punkt_a: 'street of General Marshal',
+                    punkt_b: 'street of President'
+                }
+
+            ]
+        }
     }
+
  }
 </script>

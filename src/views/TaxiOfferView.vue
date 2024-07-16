@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineComponent, type PropType } from 'vue';
+import DriverSetPriceComponent from '../components/elements/DriverSetPriceComponent.vue'
 </script>
 
 <template>
@@ -16,9 +16,10 @@ import { defineComponent, type PropType } from 'vue';
       show-arrows
     >
       <v-slide-group-item
+        class="v-slide"
         v-for="n in 15"
         :key="n"
-        v-slot="{ isSelected, toggle, selectedClass }"
+        v-slot="{toggle, selectedClass }"
       >
         <v-card
           :class="['ma-4', selectedClass]"
@@ -27,24 +28,9 @@ import { defineComponent, type PropType } from 'vue';
           width="100"
           @click="toggle"
         >
-          <div class="d-flex fill-height align-center justify-center"
-          v-for="(item,index) in items"
-          :key="index">
-          <div>text</div>
             <v-scale-transition>
-              <v-icon
-                v-if="isSelected"
-                color="white"
-                icon="mdi-close-circle-outline"
-                size="48"
-              >
-              </v-icon>
-              <div class="text">
-                text text text
-              </div>
+              <DriverSetPriceComponent v-if="showPopup" @close="showPopup = false"/>
             </v-scale-transition>
-          <div>text</div>
-          </div>
         </v-card>
       </v-slide-group-item>
     </v-slide-group>
@@ -54,28 +40,19 @@ import { defineComponent, type PropType } from 'vue';
 
 <script lang="ts">
 
-export interface CardItem {
-  street_a: string;
-  street_b: string;
-  rating: number;
-  comments: string;
-}
 
 export default {
   name: 'TaxiOfferView',
-  props: {
-    card: Array as PropType <CardItem[]>
+  components: {
+    DriverSetPriceComponent
+  },
+  data() {
+    return {
+      showPopup: true;
+    }
   }
 }
-
 </script>
 
 <style lang="scss">
-.offer-container {
-  padding-top: 40px
-}
-
-.text {
-  color: black;
-}
 </style>

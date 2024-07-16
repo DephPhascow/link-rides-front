@@ -12,6 +12,12 @@ const router = createRouter({
       meta: { auth: false, meta: {title: "Главная страница", description: "Главная страница сайта"} }
     },
     {
+      path: '/Test',
+      name: 'test',
+      component: () => import('../views/TestView.vue'),
+      meta: { auth: false, meta: {title: "Главная страница", description: "Главная страница сайта"} }
+    },
+    {
       path: '/registration',
       name: 'registration',
       component: () => import('../views/RegistrationView.vue'),
@@ -24,10 +30,22 @@ const router = createRouter({
       meta: { auth: false, meta: {title: "Поиск такси", description: "Поиск такси сайта"} }
     },
     {
-      path: '/TripView',
+      path: '/Trip',
       name: 'Trip',
       component: () => import('../views/TripView.vue'),
       meta: { auth: false, meta: {title: "Поездка", description: "Поездка сайта"} }
+    },
+    {
+      path: '/TaxiProfile',
+      name: 'Taxi-Profile',
+      component: () => import('../views/TaxiProfileView.vue'),
+      meta: { auth: false, meta: {title: "Профиль", description: "Профиль таксиста"} }
+    },
+    {
+      path: '/TaxiHistory',
+      name: 'Taxi-History',
+      component: () => import('../views/TaxiHistoryView.vue'),
+      meta: { auth: false, meta: {title: "История", description: "История поездки"} }
     },
     {
       path: '/DriverRegistration',
