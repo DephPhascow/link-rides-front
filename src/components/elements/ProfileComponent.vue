@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import defineComponent from 'vue'
+import { defineComponent } from 'vue';
+import LinkComponent from './LinkComponent.vue';
+import { ImagePosition } from './TextImageComponent.vue'
 </script>
 
 <template>
     <div class="Profile container">
         <div class="home__profile-block">
-            <img src="@/assets/images/user.svg" alt="user">
-            My Profile
-            <button class="home__profile-btn">
-                <img class="home__car-svg" src="@/assets/images/car.svg" alt="taxi">
-                Start/Stop Driving
-            </button>
+            <LinkComponent text="My Profile" to="me-profile" btnStyle="button__transparent button__border-no" image="images/user.svg" :imagePosition="ImagePosition.TOP" />
+            <LinkComponent text="Start/Stop Driving" to="TaxiSearch" image="images/car.svg" />
         </div>
     </div>
 </template>
 
 <style lang="scss">
-    .home__profile-block {
+  .home__profile-block {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,25 +27,13 @@ import defineComponent from 'vue'
     background-color: rgb(180, 180, 180);
   }
 
-  .home__profile-btn {
-    max-width: 400px;
-    padding: 8px;
-    font-size: 16px;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(35, 56, 177);
-  }
-
-  .home__car-svg {
-    width: 20px;
-    background-color: white;
-  }
-
 </style>
 
 <script lang="ts">
-export default {
-    name: 'ProfileComponent'
-}
+export default defineComponent({
+  name: 'ProfileComponent',
+  components: {
+      LinkComponent
+  }
+})
 </script>

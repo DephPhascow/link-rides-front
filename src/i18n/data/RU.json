@@ -1,3 +1,6 @@
 {
-    "example": "Пример"
+    "home": {
+        "findTaxi": "Найти такси",
+        "statistics": "Статистика"
+    }
 }

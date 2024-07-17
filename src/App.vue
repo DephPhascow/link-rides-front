@@ -1,5 +1,6 @@
 <template>
   <metainfo />
+  <HeaderComponent />
   <!-- <metainfo>
     <template v-slot:title="{ title }">{{  title }}</template>
   </metainfo>   -->
@@ -12,11 +13,13 @@
 import { defineComponent } from "vue";
 import { RouterView } from "vue-router";
 import { useMeta } from 'vue-meta'
+import HeaderComponent from "./components/components/HeaderComponent.vue";
 
 export default defineComponent({
   name: 'App',
   components: {
-    RouterView
+    RouterView,
+    HeaderComponent,
   },
   data() {
     return {

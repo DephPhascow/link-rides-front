@@ -36,6 +36,12 @@ const router = createRouter({
       meta: { auth: false, meta: {title: "Поездка", description: "Поездка сайта"} }
     },
     {
+      path: '/me/profile',
+      name: 'me-profile',
+      component: () => import('../views/TaxiProfileView.vue'),
+      meta: { auth: false, meta: {title: "Профиль", description: "Профиль таксиста"} }
+    },
+    {
       path: '/TaxiProfile',
       name: 'Taxi-Profile',
       component: () => import('../views/TaxiProfileView.vue'),

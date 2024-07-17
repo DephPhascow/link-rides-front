@@ -19,7 +19,7 @@
   --secondary-color: #2c3e50;
   --disabled-color: #bdc3c7;
   --disabled-text-color: #ecf0f1;
-  --element-padding: 10px;
+  --element-padding: 20px;
   --primary-text-color: #2c3e50;
   --secondary-text-color: #ecf0f1;
   --input-text-color: #aaa;
@@ -27,6 +27,7 @@
 
 body {
   font-family: Inter;
+  background-color: var(--white-color);
 }
 
 a {

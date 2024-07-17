@@ -1,10 +1,13 @@
 <template>
-    <header class="header"></header>
+    <header class="header">
+        <h1>Link Rides</h1>     
+    </header>
 </template>
 
 <style lang="scss" scoped>
 .header {
     width: 100%;
+    padding: 0px var(--element-padding);
 }
 </style>
 

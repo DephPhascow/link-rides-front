@@ -5,7 +5,7 @@
         justifyContent: textAlign,
         whiteSpace: wrapText ? 'pre' : 'normal',
     }">
-        <TextImageComponentVue :text="text" :image="image" :width="width" :height="height"/>
+        <TextImageComponentVue :text="text" :image="image" :width="width" :height="height" :imagePosition="imagePosition"/>
     </button>
 </template>
 
@@ -42,22 +42,37 @@
         width: fit-content;
         height: fit-content;
     }
+    &__border-no {
+        border: none !important;
+        box-shadow: none;
+        outline: none;
+    }
 }
 </style>
 <script lang="ts">
-import { defineComponent } from 'vue'
-import TextImageComponentVue from './TextImageComponent.vue'
+import { defineComponent, type PropType} from 'vue'
+import TextImageComponentVue, { ImagePosition } from './TextImageComponent.vue'
 
 export default defineComponent({
     name: "ButtonComponent",
     props: {
         text: String,
         image: String,
-        width: String,
-        height: String,
+        width: {
+            type: String,
+            default: '32',
+        },
+        height: {
+            type: String,
+            default: '32',
+        },
         minSize: Boolean,
         textAlign: String,
         wrapText: Boolean,
+        imagePosition: {
+            type: String as PropType<ImagePosition>,
+            default: ImagePosition.LEFT,
+        },
     },
     components: {
         TextImageComponentVue

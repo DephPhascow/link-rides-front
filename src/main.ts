@@ -22,20 +22,18 @@ const i18n = createI18n({
   messages,
 });
 
-const app = createApp(App, {
-    setup() {
-        const { t } = useI18n();
-        return { t };
-      },
-    });
-
 const vuetify = createVuetify({
   components,
   directives,
 })
 
 async function initApp() {
-  const app = createApp(App);
+  const app = createApp(App, {
+    setup() {
+      const { t } = useI18n();
+      return { t };
+    },
+  });
 
   app.use(createPinia());
   app.use(i18n);

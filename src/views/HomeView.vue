@@ -1,28 +1,26 @@
 <script setup lang="ts">
 import { defineComponent } from 'vue';
 import ProfileComponent from '../components/elements/ProfileComponent.vue';
-import AdComponent from '../components/elements/AdComponent.vue';
+import AdsComponent from '../components/elements/AdsComponent.vue';
 import ActionButtonComponent from '../components/elements/ActionButtonComponent.vue';
-
+import LinkComponent from '../components/elements/LinkComponent.vue';
 </script>
 
 <template>
 <div class="home container">
         <div class="home__heading-block">
-            <h1 class="home__header-1">Link Rides</h1>
             <h1 class="home__header-2">P2P
               <img class="home__header-svg" src="@/assets/images/taxi.svg" alt="taxi">
                Market
             </h1>
         </div>
         <div class="home__link-block">
-            <a class="home__link home__link-1" href="#">Find Taxi</a>
-            <a class="home__link home__link-2" href="#">Statistics</a>
+          <LinkComponent :text="$t('home.findTaxi')" to="TaxiSearch" />
+          <LinkComponent :text="$t('home.statistics')" to="TaxiSearch" />
         </div>
         <div>
-          <ProfileComponent>
-          </ProfileComponent>
-          <AdComponent/>
+          <ProfileComponent/>
+          <AdsComponent/>
         </div>
         <div>
           <!-- <HistoryComponent/> -->
@@ -62,13 +60,6 @@ import ActionButtonComponent from '../components/elements/ActionButtonComponent.
     flex-direction: column;
     gap: 20px;
     margin-bottom: 20px;
-  }
-
-  .home__header-1 {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    font-weight: 600;
   }
 
   .home__header-2 {
@@ -169,9 +160,10 @@ import ActionButtonComponent from '../components/elements/ActionButtonComponent.
     name: 'HomeView',
     components: {
       ProfileComponent,
-      AdComponent,
+      AdsComponent,
       // HistoryComponent,
-      ActionButtonComponent
+      ActionButtonComponent,
+      LinkComponent,
   }
   })
 </script> 

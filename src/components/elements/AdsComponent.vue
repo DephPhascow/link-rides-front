@@ -34,7 +34,7 @@ import { defineComponent } from "vue";
 </style>
 
 <script lang="ts">
-export default {
-  
-}
+export default defineComponent({
+  name: "AdComponent",
+})
 </script>

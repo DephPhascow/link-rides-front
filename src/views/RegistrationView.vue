@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-  import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
-  import MazBtn from 'maz-ui/components/MazBtn'
+import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
+import MazBtn from 'maz-ui/components/MazBtn'
+import { defineComponent } from 'vue';
+import ButtonComponent from '@/components/elements/ButtonComponent.vue';
 </script>
 
 <template>
@@ -8,15 +10,16 @@
     <form class="reg__form flex-column" action="">
       <h1 class="reg__h1 flex">РЕГИСТРАЦИЯ</h1>
       <span class="reg__span flex">Пожалуйста заполните форму</span>
-      <input class="reg__input" type="text" name="name" id="name" placeholder="Имя" required />
-      <input class="reg__input" type="text" name="name" id="name" placeholder="Фамилия" required />
-      <div class="reg__phone flex-column">
+      <input class="reg__input" type="text" v-model="firstName" placeholder="Имя" required />
+      <input class="reg__input" type="text" v-model="lastName" placeholder="Фамилия" required />
+      <!-- <div class="reg__phone flex-column">
         <MazPhoneNumberInput
         v-model:country-code="countryCode"
         > 
         </MazPhoneNumberInput>
         <MazBtn> прислать код </MazBtn>
-      </div>
+      </div> -->
+      <ButtonComponent text="Подтвердить" class="button__primary"/>
     </form>
   </div>
 </template>
@@ -44,12 +47,13 @@
   }
 
   .reg__input {
+    &::placeholder {
+      color: var(--secondary-color);
+    }
     padding: 10px;
     border-radius: 10px;
-  }
-
-  .reg__input::placeholder {
-    color: var(--dark-blue)
+    border: 1px solid white;
+    color: white;
   }
 
   .reg__phone {
@@ -58,11 +62,14 @@
 </style>
 
 <script lang="ts">
-// import MazPhoneNumberInput from 'maz-ui/components/'
-import { ref } from 'vue'
-const countryCode = ref ('UZ')
-  export default {
-    name: 'RegistrationView',
-    
+export default defineComponent({
+  name: 'RegistrationView',
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      countryCode: 'UZ'
+    }
   }
+})
 </script>
