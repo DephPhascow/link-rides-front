@@ -1,96 +1,94 @@
 <script setup lang="ts">
 import { defineComponent } from 'vue'
-import MazDropzone, { type MazDropzoneInstance, type MazDropzoneOptions } from 'maz-ui/components/MazDropzone'
-import MazBtn from 'maz-ui/components/MazBtn'
+import { type MazDropzoneInstance, type MazDropzoneOptions,  } from 'maz-ui/components/MazDropzone'
+import { useTaxi } from '@/stores/taxi';
 </script>
 
 <template>
- <div class="Driver__container container">
+    <div class="Driver__container container" v-if="state = State.PROCESS_REGISTRATION">
     <div class="driver__heading-block flex-column">
         <h1>Информация о Водителе</h1>
+        <p>Привет, {{ tg.initDataUnsafe.user?.first_name || '' }} {{ tg.initDataUnsafe.user?.last_name || '' }}</p>
         <span>Пожалуйста заполните все формы</span>
     </div>
-    <form class="driver__form flex-column" action="">
+    <form class="driver__form flex-column" method="post">
         <ul class="driver__list-1 driver__list flex">
             <li class="driver__item flex-column">
-                <label for="">Имя</label>
-                <input class="driver__input" type="text" required>
+                <label>Имя: <br/> <input class="driver__input" type="text" v-model="firstName" required></label>
+                
             </li>
             <li class="driver__item flex-column">
-                <label for="">Фамилия</label>
-                <input class="driver__input" type="text" required>
+                <label>Фамилия: <br/> <input class="driver__input" type="text" v-model="lastName" required></label>
             </li>
         </ul>
-    
+
         <ul class="driver__list-3 driver__list flex">
             <li class="driver__item-3 driver__item flex-column">
                 <label for="" class="driver__label-3 driver__label">
-                    Марка Автомобиля
+                    Марка Автомобиля: <br />
+                    <input type="text" class="driver__input" v-model="carBrand" required>
                 </label>
-                <input type="text" class="driver__input" required>
             </li>
             <li class="driver__item-3 driver__item flex-column">
                 <label for="" class="driver__label-3 driver__label">
-                    Модель Автомобиля
+                    Модель Автомобиля: <br />
+                    <input type="text" class="driver__input" v-model="carModel" required>
                 </label>
-                <input type="text" class="driver__input" required>
             </li>
             <li class="driver__item-3 driver__item flex-column">
                 <label for="" class="driver__label-3 driver__label">
-                    Цвет Автомобиля
+                    Цвет Автомобиля: <br />
+                    <select v-model="carColor" class="driver__input" required>
+                        <option value="BLACK" default>Черный</option>
+                    </select>
                 </label>
-                <input type="text" class="driver__input" required>
             </li>
         </ul>
         <ul class="driver__list-4 driver__list flex">
             <li class="driver__item-4 driver__item flex-column">
                 <label for="" class="driver__label-4 driver__label">
-                    Гос.Номер
+                    Гос.Номер: <br />
+                    <input type="text" class="driver__input-4 driver__input" v-model="carNumber" required>
                 </label>
-                <input type="text" class="driver__input-4 driver__input" required>
             </li>
             <li class="driver__item-4 driver__item flex-column">
                 <label for="" class="driver__label-4 driver__label">
-                    Год выпуска
+                    Год выпуска: <br />
+                    <input type="number" inputmode="numeric" class="driver__input-4 driver__input" v-model="year" required>
                 </label>
-                <input type="text" class="driver__input-4 driver__input" required>
             </li>
         </ul>
         <ul class="driver__list-2 driver__list flex">
             <li class="driver__item-2 driver__item flex-column">
                 <label for="" class="driver__label-2 driver__label">
-                    Серия и номер В/У
+                    Серия и номер В/У: <br />
+                    <input class="driver__input-2 driver__input" type="text" v-model="seriesLicense" required>
                 </label>
-                <input class="driver__input-2 driver__input" type="text" required>
             </li>
             <li class="driver__item-2 driver__item flex-column">
                 <label for="" class="driver__label-2 driver__label">
-                    Страна Выдачи В/Y
+                        Страна выдачи В/Y: <br />
+                        <select v-model="countryLicense" class="driver__input-2 driver__input" required>
+                        <option value="Узбекистан" default>Узбекистан</option>
+                    </select>
                 </label>
-                <select class="driver__select" name="Выбрать" id="">
-                    <option value="Узбекистан">Узбекистан</option>
-                    <option value="Казахстан">Казахстан</option>
-                    <option value="Россия">Россия</option>
-                </select>
             </li>
             <li class="driver__item-2 driver__item flex-column">
                 <label for="" class="driver__label-2 driver__label">
-                    Дата выдачи В/Y
+                    Дата выдачи В/Y: <br />
+                    <input class="driver__input-2 driver__input" type="date" v-model="dateGetLicense" required>
                 </label>
-                <input class="driver__input-2 driver__input" type="date" required>
             </li>
             <li class="driver__item-2 driver__item flex-column">
                 <label for="" class="driver__label-2 driver__label">
-                    Действует до 
+                    Действует до: <br />
+                    <input class="driver__input-2 driver__input" type="date" v-model="licenseValidUntil" required>
                 </label>
-                <input class="driver__input-2 driver__input" type="date" required>
             </li>
         </ul>
         <div class="driver__image-block flex-column">
-            <h2 class="driver__h2">
-                Загрузите фото водительского удостоверения
-            </h2>
-            <ClientOnly class="dropzone">
+            <!-- <h2 class="driver__h2">
+                Загрузите фото водительского удостоверения: <br/>
                 <MazDropzone
                 ref="mazDropzoneInstance"
                 :options="dropzoneOptions"
@@ -99,26 +97,32 @@ import MazBtn from 'maz-ui/components/MazBtn'
                 @sending="loading = true"
                 @complete="loading = false"
                 />
-            </ClientOnly>
-
+            </h2> -->
+    <!-- 
             <p v-if="errorMessage" style="color: red; text-align: center;">
                 {{ errorMessage }}
             </p>
 
             <MazBtn class="dropzone-btn" left-icon="arrow-up-tray" :loading="loading" @click="sendFiles">
                 Send Files
-            </MazBtn>
+            </MazBtn> -->
         </div>
     </form>
-    <div class="driver__agree flex">
-        <input class="driver__checkbox" type="checkbox">
+    <label class="driver__agree flex">
+        <input class="driver__checkbox" type="checkbox" v-model="agree">
         <span>Я принимаю условия и даю согласие на обработку 
             персональных данных в соответсвии с законодательством,Политикой
             конфидициальности и оферты
         </span>
+    </label>
+    <button v-if="availableButtonRegister" class="driver__btn" @click="onCreate">Зарегестрироваться</button>
     </div>
-    <button class="driver__btn">Зарегестрироваться</button>
- </div>
+    <div v-else-if="state == State.WAITING_FOR_APPROVAL">
+        <h1>Регистрирую, ожидайте</h1>
+    </div>
+    <div v-else>
+        <h1>Ваша заявка одобрена, теперь вы можете закрыть WebAPP и пользоваться ботом</h1>
+    </div>
 </template>
 
 <style lang="scss">
@@ -223,11 +227,36 @@ import MazBtn from 'maz-ui/components/MazBtn'
 </style>
 
 <script lang="ts">
+
+export enum State {
+    PROCESS_REGISTRATION = "PROCESS_REGISTRATION",
+    WAITING_FOR_APPROVAL = "WAITING_FOR_APPROVAL",
+    APPROVED = "APPROVED",
+}
+
  export default defineComponent({
     name: 'DriverRegistrationView',
     data() {
         return {
+            state: State.PROCESS_REGISTRATION,
+            uTaxi: useTaxi(),
+            firstName: "",
+            lastName: "",
+            carBrand: "",
+            carModel: "",
+            carColor: "",
+            countryLicense: "Узбекистан",
+            carNumber: "",
+            year: 2024,
+            seriesLicense: "",
+            dateGetLicense: "",
+            licenseValidUntil: "",
+            // photo: "",
+
+            agree: false,
             loading: false,
+            tg: {} as any,
+            tgId: "", // TODO del
             mazDropzoneInstance: {} as MazDropzoneInstance,
             errorMessage: "",
             dropzoneOptions: {
@@ -253,16 +282,73 @@ import MazBtn from 'maz-ui/components/MazBtn'
         }
     },
     methods: {
+        async onCreate() {
+            this.state = State.WAITING_FOR_APPROVAL;
+            try {
+                await this.uTaxi.runCreateTaxiInfoData(
+                    this.firstName,
+                    this.lastName,
+                    this.carBrand,
+                    this.carModel,
+                    this.carColor,
+                    this.carNumber,
+                    this.year,
+                    this.seriesLicense,
+                    this.countryLicense,
+                    this.dateGetLicense,
+                    this.licenseValidUntil,
+                    // this.photo
+                )
+                this.state = State.APPROVED;
+                this.closeWindow();
+            }
+            catch (error) {
+                alert("Ошибка при регистрации: " + error)
+            }
+        },
+        closeWindow() {
+            // Проверяем, если окно было открыто из Telegram, закрываем его
+            if ((window as any).Telegram.WebApp) {
+                (window as any).Telegram.WebApp.close();
+            } else {
+                window.close();
+            }
+        },        
         error(file: any, message: string) {
             console.log('dropzone-error', { file, message })
             this.errorMessage = message
         },
         success(file: any, response: string) {
+            // this.photo = file
+            console.log(file)
             console.log('dropzone-success', { file, response })
         },
         sendFiles() {
             this.mazDropzoneInstance.processQueue()
         }
+    },
+    computed: {
+        availableButtonRegister() {
+            return this.firstName.length > 1 && this.lastName.length > 1 && this.carBrand.length > 1 && this.carModel.length > 1 && this.carColor.length > 1 && this.carNumber.length > 1 && this.year > 1 && this.seriesLicense.length > 1 && this.dateGetLicense.length > 1 && this.licenseValidUntil.length > 1 && this.agree
+        }
+    },
+    watch: {
+        "window": {
+            handler() {
+                this.tg = (window as any).Telegram.WebApp;
+                if (this.tg.initDataUnsafe.user != undefined) {
+                    this.firstName = this.tg.initDataUnsafe.user.first_name;
+                    this.lastName = this.tg.initDataUnsafe.user.last_name;
+                    this.uTaxi.tgId = this.tg.initDataUnsafe.user.id;
+                }
+                this.uTaxi.tgId = this.tgId;
+            },
+            immediate: true
+        }
+    }, 
+    mounted() {
+        this.closeWindow()
+        alert("Для регистрации водителя, пожалуйста, заполните все поля")
     }
  })
 </script>

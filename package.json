@@ -15,12 +15,18 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.1",
     "@mdi/font": "^7.4.47",
+    "@vue/apollo-option": "^4.0.0",
+    "apollo": "^2.34.0",
     "D": "^1.0.0",
     "dropzone": "^5.9.3",
+    "graphql": "^15.9.0",
+    "graphql-tag": "^2.12.6",
     "libphonenumber-js": "^1.11.4",
     "maz-ui": "^3.44.3",
     "pinia": "^2.1.7",
+    "ts-luxon": "^5.0.5",
     "vue": "^3.3.4",
     "vue-i18n": "^9.7.0",
     "vue-meta": "^3.0.0-alpha.7",
